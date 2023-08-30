@@ -1,0 +1,43 @@
+<!--In app-root start-->
+<div class="container my-3">
+    <!--Header start-->
+    <h3 class="text-center bg-info text-white p-3 w-100 mb-2 sha"
+        style="word-spacing: 10px; letter-spacing: 3px; border-radius: 20px;">
+        <b style="font-size: 40px;">T</b>O <b style="font-size: 40px;">D</b>O <b style="font-size: 40px;">L</b>IST <b
+            style="font-size: 40px;">A</b>PP
+    </h3>
+    <!--Header end-->
+
+    <!--Body start-->
+    <div class="container p-4 rounded-2" style="background-color: beige;">
+        <!--Input control start-->
+        <div class="input-group p-2">
+            <input type="text" class="form-control w-75 rounded-0" id="item" style="line-height: 20px;"
+                placeholder="Type something to add..." autofocus [(ngModel)]="inputString"> <!--Use two way data binding-->
+            <button type="button" class="btn form-control btn-success w-25 rounded-0" (click)="addItem(inputString)">Add</button> <!--Use event binding for add item to array-->
+        </div>
+        <!--Input control end-->
+
+        <!--Process control start-->
+        <div class="mt-1 m-4 overflow-y-scroll p-3" style="height: 500px;">
+            <div class="container mt-3 p-4 bg-info-subtle rounded-3 shadow" *ngFor="let item of dataAry; let currentIndex=index;"> <!--Use ng For loop and get current index for remove specific item-->
+                <div class="form-check">
+                    <input class="form-check-input" id="{{currentIndex}}" type="checkbox" style="cursor: pointer" [checked]="checkStatusDataAry[currentIndex]" (click)="checkToogle(currentIndex)"><!--Use event binding for user check or not.-->
+                    <span [ngClass]="{strikeThrough: checkStatusDataAry[currentIndex]}"> <!--Use Property binding for user check or not-->
+                        {{item}} <!--Use {{item}} for String Interpolation-->
+                    </span>
+                    <span class="float-end" style="cursor: pointer; font-weight: 500;" (click)="removeItem(currentIndex)">X</span><!--Use event binding for remove specific item-->
+                </div>
+            </div>
+        </div>
+        <!--Process control end-->
+    </div>
+    <!--Body end-->
+
+    <!--Footer start-->
+    <div class="container bg-white p-2 text-center mt-2">
+        <b>Developed by Min Naing Tun</b>
+    </div>
+    <!--Footer end-->
+</div>
+<!--In app-root end-->
